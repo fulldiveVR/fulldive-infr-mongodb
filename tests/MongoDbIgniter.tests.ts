@@ -10,13 +10,29 @@ describe("Test MongoDbIgniter", async () => {
             dbName: dbName,
             collections: [
                 {
-                    name: collectionName
+                    name: collectionName,
+                    indexes: [
+                            {
+                                keys: {
+                                    name: 1,
+                                },
+                                options: {
+                                    unique: true,
+                                    background: false
+                                }
+                            }
+                        ]
                 }
             ]
         }
         const db = await MongoDbIgniter.initializeDb(config)
         const collection = db.collection(collectionName)
+        const name = "FullDive"
+        await collection.deleteOne({ name })
+        await collection.insertOne({ name })
+        const expectElement = await collection.findOne({ name })
         expect(collection.dbName).eq(dbName)
         expect(collection.collectionName).eq(collectionName)
+        expect(expectElement.name).eq(name)
     })
 })
