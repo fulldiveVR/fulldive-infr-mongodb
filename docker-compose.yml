@@ -1,0 +1,17 @@
+version: "2.1"
+services:
+  mongodb:
+    image: bitnami/mongodb:4.4
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_REPLICA_SET_NAME=rs0
+      - ALLOW_EMPTY_PASSWORD=yes
+    healthcheck:
+      test: 'mongo --eval "db.adminCommand(''ping'')" mongodb://localhost/local?replicaSet=rs0'
+      interval: 3s
+      timeout: 5s
+      retries: 20
+    logging:
+      driver: none

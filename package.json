@@ -4,31 +4,44 @@
   "description": "Library for working with mongo DB.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm run lint",
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "build": "rm -rf lib/* && tsc",
     "lint": "eslint 'src/**/*.ts'",
-    "format": "prettier --config .prettierrc.yml 'src/**/*.ts' --write"
+    "format": "prettier --config .prettierrc.yml 'src/**/*.ts' --write",
+    "test": "NODE_ENV=test mocha 'tests/**/*.ts'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fulldiveVR/fulldive-infr-mongodb.git"
   },
-  "keywords": ["mongodb", "mongo"],
+  "keywords": [
+    "mongodb",
+    "mongo"
+  ],
   "author": "FullDive",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fulldiveVR/fulldive-infr-mongodb/issues"
   },
   "homepage": "https://github.com/fulldiveVR/fulldive-infr-mongodb#readme",
+  "dependencies": {
+    "mongodb": "^5.6.0"
+  },
   "devDependencies": {
+    "@types/mocha": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "chai": "^4.3.7",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "mocha": "^10.2.0",
     "prettier": "^2.8.8",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.3"
   }
 }
