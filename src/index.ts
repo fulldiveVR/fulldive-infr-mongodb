@@ -1,1 +1,1 @@
-export * as MongoDbIgniter from "./mongodb-igniter/MongoDbIgniter"
+export { MongoDbIgniter, DbDeclaration, CollectionDeclaration, IndexDeclaration, CollectionInitializationResult } from "./mongodb-igniter/MongoDbIgniter"

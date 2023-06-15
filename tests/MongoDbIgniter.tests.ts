@@ -1,5 +1,5 @@
 import { expect } from "chai"
-import { MongoDbIgniter } from "../src/mongodb-igniter/MongoDbIgniter"
+import { MongoDbIgniter } from "../lib"
 
 describe("Test MongoDbIgniter", async () => {
     it("Test init db", async () => {
